@@ -6,8 +6,14 @@ const methodOverride = require('method-override'),
 const bookRoutes = require('./routes/book');
 const userRoutes = require('./routes/user');
 
+const BookModel = require('./models/book');
+
+const seedDatabase = require('./seed.js');
+
 const app = express();
 mongoose.connect('mongodb://127.0.0.1/bookface_app');
+seedDatabase();
+
 
 // ***********
 // APP SETUP
