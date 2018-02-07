@@ -3,6 +3,9 @@ const methodOverride = require('method-override'),
 	  mongoose = require('mongoose'),
 	  express = require('express');
 
+const bookRoutes = require('./routes/book');
+const userRoutes = require('./routes/user');
+
 const app = express();
 mongoose.connect('mongodb://127.0.0.1/bookface_app');
 
@@ -19,8 +22,11 @@ app.use(methodOverride('_method'));
 // ROUTES
 // ***********
 app.get('/', (req, res) => {
-	res.send('App working');
+	res.redirect('/books');
 })
+
+app.use('/books', bookRoutes);
+app.use('/user', userRoutes);
 
 
 
