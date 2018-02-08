@@ -1,1 +1,10 @@
 <h1>Show all books here</h1>
+
+<% books.forEach((book) => { %>
+	<div>
+		<h4><%= book.title %></h4>
+		<p><%= book.author %></p>
+		<p><%= book.description %></p>
+		<small>Date Posted: <%= book.date_added %></small>
+	</div>
+<% }); %>

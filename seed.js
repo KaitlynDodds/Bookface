@@ -5,14 +5,14 @@ const Comment = require('./models/comment');
 
 const bookData1 = [
 	{
-		name: "Harry Potter and the Prisoner of Azkaban",
+		title: "Harry Potter and the Prisoner of Azkaban",
 		author: "J.K. Rowling",
 		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
 		rating: 5,
 		image: "https://images-na.ssl-images-amazon.com/images/I/81lAPl9Fl0L.jpg"
 	},
 	{
-		name: "Pride and Prejudice",
+		title: "Pride and Prejudice",
 		author: "Jane Austin",
 		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
 		rating: 2,
@@ -22,14 +22,14 @@ const bookData1 = [
 
 const bookData2 = [
 	{
-		name: "Leviathan Wakes",
+		title: "Leviathan Wakes",
 		author: "James A. Corey",
 		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
 		rating: 3,
 		image: "https://images-na.ssl-images-amazon.com/images/I/91npjUXXkzL.jpg"
 	},
 	{
-		name: "The Way of Kings",
+		title: "The Way of Kings",
 		author: "Brandon Sanderson",
 		description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
 		rating: 4,
@@ -96,7 +96,6 @@ function seedDatabase() {
 
 	function createBooks() {
 		// TODO: kzd-> NOT DRY, needs to be refactored
-		console.log('Creating books...');
 		// user 1 books
 		bookData1.forEach((seedBook) => {
 			Book.create(seedBook)
@@ -107,7 +106,9 @@ function seedDatabase() {
 				});
 			});
 		});
+		
 		// user 2 books
+		console.log('Creating books...');
 		bookData2.forEach((seedBook) => {
 			Book.create(seedBook)
 			.then((book) => {
@@ -116,7 +117,7 @@ function seedDatabase() {
 					user.save();
 				});
 			});
-		});
+		});		
 	}
 
 	function createComments() {
