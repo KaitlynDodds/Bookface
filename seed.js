@@ -39,12 +39,14 @@ const bookData2 = [
 
 const commentData1 = [
 	{
+		username: "anonymous",
 		content: "What an awesome book! It really made me think about my place in the universe!",
 	}
 ];
 
 const commentData2 = [
 	{
+		username: "anonymous",
 		content: "This book put me to sleep! I can't believe you made it through it.",
 	}
 ];
@@ -68,68 +70,83 @@ const userData = [
 
 function seedDatabase() {
 
-	// remove all comments
-	// Comment.remove({}, (err) => {
-	// 	if (err) {
-	// 		console.log(err);
-	// 	} else {
-	// 		console.log('comments removed');
-	// 	}
-	// });
+	function removeAllComments() {
+		console.log('Removing comments...');
+		return Comment.remove({});
+	}
 
-	// // remove all books
-	// Book.remove({}, (err) => {
-	// 	if (err) {
-	// 		console.log(err);
-	// 	}  else {
-	// 		console.log('books removed');
-	// 	}
-	// });
+	function removeAllBooks() {
+		console.log('Removing books...');
+		return Book.remove({});
+	}
 
-	// // remove all users 
-	// User.remove({}, (err) => {
-	// 	if (err) {
-	// 		console.log(err);
-	// 	} else {
-	// 		console.log('user removed');
-	// 	}
-	// });
+	function removeAllUsers() {
+		console.log('Removing all users...');
+		return User.remove({});
+	}
 
-	// // create users first
-	// userData.forEach((seedUser) => {
-	// 	User.create(seedUser, (err, user) => {
-	// 		if (err) {
-	// 			console.log(err);
-	// 		} else {
-	// 			console.log('USER CREATED');
-	// 			console.log(user);
-	// 		}
-	// 	});
-	// });
-	
-	// // Add books to first user 
-	// User.findOne({username: userData[0]["username"]}, (err, user) => {
-	// 	if (err) {
-	// 		console.log(err);
-	// 	} else {
-	// 		console.log('ADDING BOOKS TO USER');
-	// 		console.log(user);
-	// 		// create books 
-	// 		bookData1.forEach((seedBook) => {
-	// 			Book.create(seedBook, (err, book) => {
-	// 				if (err) {
-	// 					console.log(err);
-	// 				} else {
-	// 					console.log(book);
-	// 					// push book to user
-	// 					user.books.push(book._id);
-	// 					user.save();
-	// 				}
-	// 			});
-	// 		});
-	// 	}
-	// });
-	
+	function createUsers() {
+		console.log('Creating users...');
+		return userData.forEach((seedUser) => {
+			User.create(seedUser, (err, user) => {
+				console.log(user);
+			});
+		});
+	}
+
+	function createBooks() {
+		// TODO: kzd-> NOT DRY, needs to be refactored
+		console.log('Creating books...');
+		// user 1 books
+		bookData1.forEach((seedBook) => {
+			Book.create(seedBook)
+			.then((book) => {
+				User.findOne(userData[0], (err, user) => {
+					user.books.push(book._id);
+					user.save();
+				});
+			});
+		});
+		// user 2 books
+		bookData2.forEach((seedBook) => {
+			Book.create(seedBook)
+			.then((book) => {
+				User.findOne(userData[1], (err, user) => {
+					user.books.push(book._id);
+					user.save();
+				});
+			});
+		});
+	}
+
+	function createComments() {
+		console.log('Creating comments...');
+		bookData1.forEach((seedBook) => {
+			Book.findOne({name: seedBook.name})
+			.then((book) => {
+				Comment.create(commentData1, (err, comment) => {
+					book.comments.push(comment._id);
+					book.save();
+				});
+			}).catch((err) => {
+				console.log('error: ', err);
+			});
+		});
+	}
+
+	function resetDB() {
+		removeAllComments()
+		.then(removeAllBooks)
+		.then(removeAllUsers)
+		.then(createUsers)
+		.then(createBooks)
+		.catch((err) => {
+			console.log(err);
+		});
+	}
+
+	resetDB();
+
 };
 
 module.exports = seedDatabase;
