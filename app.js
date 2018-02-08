@@ -29,7 +29,7 @@ app.use(methodOverride('_method'));
 // ***********
 app.get('/', (req, res) => {
 	res.redirect('/books');
-})
+});
 
 app.use('/books', bookRoutes);
 app.use('/user', userRoutes);

@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 const commentSchema = new mongoose.Schema({
-	username: String,
+	user: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "User",
+		default: "Anonymous"
+	},
 	content: String,
 	date_added: {
 		type: Date,

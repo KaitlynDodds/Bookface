@@ -139,8 +139,8 @@ function seedDatabase() {
 		removeAllComments()
 		.then(removeAllBooks)
 		.then(removeAllUsers)
-		.then(createUsers)
-		.then(createBooks)
+		// .then(createUsers)
+		// .then(createBooks)
 		.catch((err) => {
 			console.log(err);
 		});
