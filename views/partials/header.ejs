@@ -11,10 +11,10 @@
 
 	<!-- TOP MENU -->
 	<div class="ui inverted stackable top fixed menu">
-	  <div class="item">
+	  <a href="/" class="item">
 	    <i class="far fa-2x fa-bookmark"></i>
-	    <a class="item">Bookface</a>
-	  </div>
+	    <span>Bookface</span>
+	  </a>
 	  <div class="right menu">
 	  	<% if (false) { %> <!-- TODO: kzd -> check if user is logged in -->
 	  		<a class="item">Logout</a>
@@ -24,8 +24,8 @@
 	  			</a>
 	  		</div>
 	  	<% } else { %>
-	  		<a href="/user/signup" class="item">Sign Up</a>
-	    	<a class="item">Login</a>
+	  		<a href="/user/register" class="item">Sign Up</a>
+	    	<a href="/user/login" class="item">Login</a>
 	  	<% } %>
 	    
 	  </div>
