@@ -21,8 +21,11 @@ const seedDatabase = require('./seed.js');
 // ***********
 const app = express();
 mongoose.connect('mongodb://127.0.0.1/bookface_app');
-seedDatabase();
+// seedDatabase();
 app.set('view engine', 'ejs');
+app.use(methodOverride('_method'));
+app.use(express.static(__dirname + "/public"));
+app.use(bodyParser.urlencoded({extended: false}));
 // encode/decode session
 app.use(expressSession({
 	secret: "Books can transport you to a whole new world.",
@@ -35,10 +38,6 @@ app.use(passport.session());
 // read (deserialize) and encode (serialize) session 
 passport.serializeUser(UserModel.serializeUser());
 passport.deserializeUser(UserModel.deserializeUser());
-
-app.set(bodyParser.urlencoded({extended: true}));
-app.use(methodOverride('_method'));
-app.use(express.static(__dirname + "/public"));
 
 
 
