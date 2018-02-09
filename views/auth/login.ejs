@@ -1,5 +1,7 @@
 <% include ../partials/header %>
 
+<%- include('../partials/navbar', {isLoggedIn: isLoggedIn}); %>
+
 <h4>Login</h4>
 
 <form class="ui form" method="POST" action="/login">

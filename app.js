@@ -9,6 +9,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 const bookRoutes = require('./routes/book');
 const userRoutes = require('./routes/user');
+const authRoutes = require('./routes/auth');
 
 const BookModel = require('./models/book');
 const UserModel = require('./models/user');
@@ -46,9 +47,10 @@ passport.deserializeUser(UserModel.deserializeUser());
 // ROUTES
 // ***********
 app.get('/', (req, res) => {
-	res.redirect('/books');
+	res.render('index', {isLoggedIn: false, user: undefined});
 });
 
+app.use('/', authRoutes);
 app.use('/books', bookRoutes);
 app.use('/user', userRoutes);
 

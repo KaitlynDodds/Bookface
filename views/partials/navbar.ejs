@@ -1,0 +1,19 @@
+
+<!-- TOP MENU -->
+<div class="ui inverted stackable top fixed menu">
+  <a href="/" class="item">
+    <i class="far fa-2x fa-bookmark"></i>
+    <span>Bookface</span>
+  </a>
+  <div class="right menu">
+  	<% if (isLoggedIn) { %> <!-- TODO: kzd -> check if user is logged in -->
+  		<%- include('user', {user: user}); %>
+  	<% } else { %>
+  		<%- include('visitor'); %>
+  	<% } %>
+    
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="ui container">
