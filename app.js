@@ -36,6 +36,7 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 // read (deserialize) and encode (serialize) session 
+passport.use(new localStrategy(UserModel.authenticate()));
 passport.serializeUser(UserModel.serializeUser());
 passport.deserializeUser(UserModel.deserializeUser());
 
