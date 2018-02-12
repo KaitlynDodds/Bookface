@@ -36,7 +36,11 @@ router.get('/:id/edit', isLoggedIn, (req, res) => {
 	});
 });
 
+
 // UPDATE
+router.put('/:id', isLoggedIn, (req, res)=> {
+	User.findByIdAndUpdate(req.params.id, )
+});
 
 // DELETE
 

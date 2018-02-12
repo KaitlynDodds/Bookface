@@ -1,0 +1,37 @@
+Completed Tasks:
+	- github
+	- express app
+	- Authentication routes (login (get/post), register (get/post))
+	- Authentication views login form, register form 
+	- User routes 
+		- edit (get)
+		- profile (get)
+		- new (register)
+	- Book routes
+		- index (feed)
+
+Tasks To Do:
+	- Book Model (finalized)
+	- User Model (finalized)
+	- Comment Model (finalized)
+	- Book routes
+		- SHOW
+		- EDIT
+		- UPDATE
+		- NEW
+		- DELETE 
+	- Comment routes
+		- NEW
+		- DELETE 
+	- User routes
+		- update (post)
+	- Book views
+		- feed 
+		- show 
+		- new form
+		- edit form 
+	- Comment views
+		- new form
+		- comment listing on book SHOW
+	- Seed database 
+	- Auth middleware, pass user data to every route 
