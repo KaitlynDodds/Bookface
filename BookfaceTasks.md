@@ -5,6 +5,7 @@ Completed Tasks:
 	- Authentication views login form, register form 
 	- User views 
 		- edit user form 
+		- user profile
 	- User routes 
 		- edit (get)
 		- profile (get)
@@ -14,6 +15,7 @@ Completed Tasks:
 	- Book routes
 		- index (feed)
 		- NEW
+		- SHOW
 	- Book Views
 		- new form
 	- Auth middleware, pass user data to every route 
@@ -24,7 +26,6 @@ Tasks To Do:
 	- User Model (finalized)
 	- Comment Model (finalized)
 	- Book routes
-		- SHOW
 		- EDIT
 		- UPDATE		
 		- DELETE 
@@ -39,7 +40,7 @@ Tasks To Do:
 		- new form
 		- comment listing on book SHOW
 	- User views 
-		- user profile
+		
 	- Seed database 
 	- Index page ui (anyone can see)
 	- data validations for forms 

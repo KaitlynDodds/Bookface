@@ -12,6 +12,17 @@ router.get('/', isLoggedIn, (req, res) => {
 	res.render('book/feed');
 });
 
+// SHOW - show profile for single book
+router.get('/:id', isLoggedIn, (req, res) => {
+	Book.findById(req.params.id).populate("comments").exec((err, book) => {
+		if (err) {
+			console.log('error: ', err);
+			res.redirect('/');
+		}
+		res.render('book/show', {book: book});
+	});
+});
+
 // NEW - show new book form
 router.get('/new', isLoggedIn, (req, res) => {
 	res.render('book/new');
