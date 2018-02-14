@@ -12,6 +12,11 @@ router.get('/', isLoggedIn, (req, res) => {
 	res.render('book/feed');
 });
 
+// NEW - show new book form
+router.get('/new', isLoggedIn, (req, res) => {
+	res.render('book/new');
+});
+
 // SHOW - show profile for single book
 router.get('/:id', isLoggedIn, (req, res) => {
 	Book.findById(req.params.id).populate("comments").populate('user').exec((err, book) => {
@@ -21,11 +26,6 @@ router.get('/:id', isLoggedIn, (req, res) => {
 		}
 		res.render('book/show', {book: book});
 	});
-});
-
-// NEW - show new book form
-router.get('/new', isLoggedIn, (req, res) => {
-	res.render('book/new');
 });
 
 // CREATE - create new book 
@@ -56,4 +56,28 @@ router.post('/', isLoggedIn, (req, res) => {
 	});
 });
 
+// DELETE 
+router.delete('/:id', isLoggedIn, (req, res) => {
+	Book.findByIdAndRemove(req.params.id, (err, book) => {
+		if (err) {
+			console.log('error: ', err);			
+		} 
+		res.redirect('/user/' + req.user._id + '/profile');
+	});
+});
+
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

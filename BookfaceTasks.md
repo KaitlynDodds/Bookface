@@ -18,6 +18,7 @@ Completed Tasks:
 		- SHOW
 	- Book Views
 		- new form
+		- show 
 	- Auth middleware, pass user data to every route 
 	
 
@@ -30,17 +31,12 @@ Tasks To Do:
 		- UPDATE		
 		- DELETE 
 	- Comment routes
-		- NEW
-		- DELETE 
+		- CREATE
 	- Book views
 		- feed 
-		- show 
 		- edit form 
 	- Comment views
-		- new form
 		- comment listing on book SHOW
-	- User views 
-		
 	- Seed database 
 	- Index page ui (anyone can see)
 	- data validations for forms 
