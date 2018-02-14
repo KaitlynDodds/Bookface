@@ -1,0 +1,22 @@
+<div class="item">
+	<div class="content">
+
+		<a href="/books/<%= book._id %>" class="ui header">
+			<%= book.title %>
+			<div class="sub header">By <%= book.author %></div>
+		</a>
+
+		<div class="ui right floated rating" data-rating="<%= book.rating %>"></div>
+	
+		<div class="description">
+	        <p><%= book.description.substring(0, 201) %>...</p>
+	    </div>
+
+	</div>
+
+	<a  href="/books/<%= book._id %>" id="cover_thumbnail" class="ui small image">
+      <img src="<%= book.image %>">
+    </a>
+
+</div>
+

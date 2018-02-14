@@ -28,10 +28,14 @@
 	</div>
 	<div class="ten wide column">
 		<a id="new-book-btn" class="ui positive basic button" href="/books/new">Post New Book</a>
+		
 		<!-- BOOKS CREATED BY USER WILL GO HERE -->
-		<% books.forEach((book) => { %>
-			<p><%= book.title %></p>
-		<% }) %>
+		<div id="book-profile-feed" class="ui divided very relaxed items">
+			<% books.forEach((book) => { %>
+				<% include ../partials/book_preview %>
+			<% }) %>
+		</div>
+	
 	</div>
 </div>
 

@@ -19,6 +19,7 @@ router.get('/new', isLoggedIn, (req, res) => {
 
 // CREATE - create new book 
 router.post('/', isLoggedIn, (req, res) => {
+	console.log(req.body.book);
 	Book.create(req.body.book, (err, book) => {
 		if (err) {
 			console.log('error: ', err); 

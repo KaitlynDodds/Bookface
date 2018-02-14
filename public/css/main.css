@@ -1,6 +1,6 @@
 .container {
-	margin: 100px 0;
-	height: 100%;
+	margin-top: 100px;
+	margin-bottom: 50px;
 }
 
 svg {
@@ -29,4 +29,30 @@ svg {
 
 #new-book-btn {
 	width: 100%;
+}
+
+.description {
+	padding-top: 15px;
+}
+
+#cover_thumbnail {
+	padding-left: 15px;
+}
+
+#book-profile-feed {
+	margin-top: 40px;
+}
+
+/*************
+Media Queries
+*************/
+
+@media all and (max-width: 767px) {
+	.container {
+		margin-top: 160px;
+	}
+
+	#cover_thumbnail {
+		margin-top: 15px;
+	}
 }
