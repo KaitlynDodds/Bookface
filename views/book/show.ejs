@@ -1,5 +1,86 @@
 <% include ../partials/header %>
 
-<p><%= book.title %></p>
+<div class="ui stackable grid">
+	<div class="row">
+
+		<div class="twelve wide column">
+			<div class="item">
+				<div id="book-profile-image" class="ui medium left floated image">
+					<img src="<%= book.image %>">
+				</div>
+				<div class="content">
+					<h2 href="/books/<%= book._id %>" id="book-title-block" class="ui header">
+						<%= book.title %>
+						<div class="sub header">By <%= book.author %></div>
+					</h2>
+
+					<div id="book-rating" class="ui rating" data-rating="<%= book.rating %>"></div>
+			
+
+					<div class="description">
+				        <p><%= book.description %></p>
+				    </div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="four wide column">
+
+			<h3 id="comment-header" class="ui dividing header">Comments</h3>
+
+			<form id="comment-form" class="ui reply form">
+			    <div class="field">
+			    	<textarea></textarea>
+			    </div>
+			    <div class="ui primary submit button">
+			      	Add Comment
+			    </div>
+		  	</form>
+
+			<div class="ui comments">
+				<% book.comments.forEach((comment) => { %>
+					<div class="comment">
+
+						<a class="avatar">
+					    	<img src="<%= comment.user.avatar %>">
+					    </a>
+
+					    <div id="comment_content" class="content">
+					    	<a class="author"><%= comment.user.username %></a>
+
+							<div class="metadata">
+						    	<div class="date"><%= comment.date_added %></div>
+						    </div>
+
+							<div class="text">
+					        	<%= comment.content %>
+					      	</div>
+					    </div>
+
+					</div>
+				<% }) %>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- The current user is the same user who posted this book, they have the ability to edit/delete book post -->
+	<% if (currentUser._id.toString() === book.user._id.toString()) { %>
+		<div class="row">
+
+			<div class="four wide column">
+				<a href="/books/<%= book._id %>/edit" class="ui basic left floated button">Edit Post</a>
+				<form action="/books/<%= book._id%>?_method=DELETE" method="POST">
+					<button class="ui button">Delete Post</button>
+				</form>
+			</div>
+
+		</div>
+	<% } %>
+
+</div>
+
+
 
 <% include ../partials/footer %>

@@ -14,7 +14,7 @@ router.get('/', isLoggedIn, (req, res) => {
 
 // SHOW - show profile for single book
 router.get('/:id', isLoggedIn, (req, res) => {
-	Book.findById(req.params.id).populate("comments").exec((err, book) => {
+	Book.findById(req.params.id).populate("comments").populate('user').exec((err, book) => {
 		if (err) {
 			console.log('error: ', err);
 			res.redirect('/');
@@ -30,7 +30,6 @@ router.get('/new', isLoggedIn, (req, res) => {
 
 // CREATE - create new book 
 router.post('/', isLoggedIn, (req, res) => {
-	console.log(req.body.book);
 	Book.create(req.body.book, (err, book) => {
 		if (err) {
 			console.log('error: ', err); 

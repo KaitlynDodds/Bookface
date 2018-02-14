@@ -43,6 +43,32 @@ svg {
 	margin-top: 40px;
 }
 
+#book-profile-image {
+	padding: 1px;
+	border: solid 1px #aeaeae;
+	margin-right: 20px;
+}
+
+#book-title-block {
+	display: inline-block;
+}
+
+#book-rating {
+	float: right;
+}
+
+#comment_content {
+	padding: 0;
+}
+
+#comment-header {
+	margin-bottom: 10px;
+}
+
+#comment-form textarea {
+	height: 100px;
+}
+
 /*************
 Media Queries
 *************/
