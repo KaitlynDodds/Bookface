@@ -7,6 +7,8 @@ Completed Tasks:
 		- edit (get)
 		- profile (get)
 		- new (register)
+		- update (put)
+		- delete 
 	- Book routes
 		- index (feed)
 	- Auth middleware, pass user data to every route 
@@ -25,9 +27,6 @@ Tasks To Do:
 	- Comment routes
 		- NEW
 		- DELETE 
-	- User routes
-		- update (post)
-		- delete 
 	- Book views
 		- feed 
 		- show 

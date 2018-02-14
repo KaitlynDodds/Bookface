@@ -49,5 +49,14 @@ router.put('/:id', isLoggedIn, (req, res)=> {
 });
 
 // DELETE
+router.delete('/:id', isLoggedIn, (req, res) => {
+	User.findByIdAndRemove(req.user._id, (err, user) => {
+		if (err) {
+			console.log('error: ', err);
+			res.redirect('/user/' + req.params.id + '/profile');
+		}
+		res.redirect('/');
+	});
+});
 
 module.exports = router;
