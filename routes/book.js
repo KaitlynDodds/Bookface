@@ -66,6 +66,28 @@ router.delete('/:id', isLoggedIn, (req, res) => {
 	});
 });
 
+// EDIT - show form to edit book
+router.get('/:id/edit', isLoggedIn, (req, res) => {
+	Book.findById(req.params.id, (err, book) => {
+		if (err) {
+			console.log('error: ', err);
+			res.redirect('/user/' + req.user._id + '/profile');
+		}
+		res.render('book/edit', {book: book});
+	});
+});
+
+// CREATE - submit changes to book 
+router.put('/:id', isLoggedIn, (req, res) => {
+	Book.findByIdAndUpdate(req.params.id, req.body.book, (err, book) => {
+		if (err) {
+			console.log('error: ', err);
+			res.redirect('/books/' + book._id);
+		}
+		res.redirect('/books/' + book._id);
+	});
+});
+
 module.exports = router;
 
 

@@ -16,6 +16,7 @@ Completed Tasks:
 		- index (feed)
 		- NEW
 		- SHOW
+		- DELETE 
 	- Book Views
 		- new form
 		- show 
@@ -29,7 +30,6 @@ Tasks To Do:
 	- Book routes
 		- EDIT
 		- UPDATE		
-		- DELETE 
 	- Comment routes
 		- CREATE
 	- Book views
