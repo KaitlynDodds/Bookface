@@ -26,7 +26,7 @@ mongoose.connect('mongodb://127.0.0.1/bookface_app');
 app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + "/public"));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 // encode/decode session
 app.use(expressSession({
 	secret: "Books can transport you to a whole new world.",
@@ -41,13 +41,18 @@ passport.use(new localStrategy(UserModel.authenticate()));
 passport.serializeUser(UserModel.serializeUser());
 passport.deserializeUser(UserModel.deserializeUser());
 
+// pass current user data to each route 
+app.use(function(req, res, next) {
+	res.locals.currentUser = req.user;
+	next();
+});
 
 
 // ***********
 // ROUTES
 // ***********
 app.get('/', (req, res) => {
-	res.render('index', {isLoggedIn: false, user: undefined});
+	res.render('index');
 });
 
 app.use('/', authRoutes);

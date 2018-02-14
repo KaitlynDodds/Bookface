@@ -9,6 +9,8 @@ Completed Tasks:
 		- new (register)
 	- Book routes
 		- index (feed)
+	- Auth middleware, pass user data to every route 
+	- 
 
 Tasks To Do:
 	- Book Model (finalized)
@@ -25,6 +27,7 @@ Tasks To Do:
 		- DELETE 
 	- User routes
 		- update (post)
+		- delete 
 	- Book views
 		- feed 
 		- show 
@@ -34,4 +37,6 @@ Tasks To Do:
 		- new form
 		- comment listing on book SHOW
 	- Seed database 
-	- Auth middleware, pass user data to every route 
+	- Index page ui (anyone can see)
+	- data validations for forms 
+	

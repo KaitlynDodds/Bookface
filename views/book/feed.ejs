@@ -1,9 +1,7 @@
 <% include ../partials/header %>
 
-<%- include('../partials/navbar', {isLoggedIn: isLoggedIn, user: user}); %>
-
 <h1>Books will go here</h1>
 
-<p><%= user.username %></p>
+<p><%= currentUser.username %></p>
 
 <% include ../partials/footer %>

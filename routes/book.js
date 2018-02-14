@@ -8,7 +8,7 @@ const isLoggedIn = require('./middleware/authentication');
 const router = express.Router();
 
 router.get('/', isLoggedIn, (req, res) => {
-	res.render('book/feed', {isLoggedIn: true, user: req.user});
+	res.render('book/feed');
 });
 
 module.exports = router;
