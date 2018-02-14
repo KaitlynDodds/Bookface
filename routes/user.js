@@ -13,12 +13,12 @@ router.get('/', (req, res) => {
 
 // SHOW
 router.get('/:id/profile', isLoggedIn, (req, res) => {
-	User.findById(req.params.id, (err, user) => {
+	User.findById(req.params.id).populate("books").exec((err, user) => {
 		if (err) {
 			console.log('error: ', err);
 			res.redirect('/logout'); // FIXME: kzd -> secure?
 		} else {
-			res.render('user/profile');
+			res.render('user/profile', { books: user.books });
 		}
 	});	
 });

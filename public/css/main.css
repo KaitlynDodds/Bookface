@@ -7,11 +7,6 @@ svg {
 	margin-right: 15px;
 }
 
-.column {
-	border: solid 1px pink;
-	/*text-align: center;*/
-}
-
 #profile-avatar {
 	padding: 0;
 }
@@ -30,4 +25,8 @@ svg {
 
 #bio {
 	margin: 15px 0;
+}
+
+#new-book-btn {
+	width: 100%;
 }

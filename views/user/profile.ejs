@@ -27,7 +27,11 @@
 
 	</div>
 	<div class="ten wide column">
-		<%= currentUser.bio %>
+		<a id="new-book-btn" class="ui positive basic button" href="/books/new">Post New Book</a>
+		<!-- BOOKS CREATED BY USER WILL GO HERE -->
+		<% books.forEach((book) => { %>
+			<p><%= book.title %></p>
+		<% }) %>
 	</div>
 </div>
 
