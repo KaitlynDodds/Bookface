@@ -29,15 +29,17 @@
 
 			<h3 id="comment-header" class="ui dividing header">Comments</h3>
 
-			<form id="comment-form" class="ui reply form">
+			<!-- Form to create new comment -->
+			<form action="<%= book._id %>/comments" method="POST" id="comment-form" class="ui reply form">
 			    <div class="field">
-			    	<textarea></textarea>
+			    	<textarea name="comment[content]"></textarea>
 			    </div>
-			    <div class="ui primary submit button">
+			    <button class="ui primary submit button">
 			      	Add Comment
-			    </div>
+			    </button>
 		  	</form>
 
+		  	<!-- Display comments for book -->
 			<div class="ui comments">
 				<% book.comments.forEach((comment) => { %>
 					<div class="comment">
@@ -50,7 +52,7 @@
 					    	<a class="author"><%= comment.user.username %></a>
 
 							<div class="metadata">
-						    	<div class="date"><%= comment.date_added %></div>
+						    	<div class="date"><%= comment.date_added.toDateString() %></div>
 						    </div>
 
 							<div class="text">

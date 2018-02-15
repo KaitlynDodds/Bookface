@@ -7,11 +7,10 @@ const passportLocalMongoose = require('passport-local-mongoose');
 	  passport 				= require('passport'),
 	  express 				= require('express');
 
-const bookRoutes = require('./routes/book');
-const userRoutes = require('./routes/user');
-const authRoutes = require('./routes/auth');
+const bookRoutes 	= require('./routes/book');
+const userRoutes 	= require('./routes/user');
+const authRoutes 	= require('./routes/auth');
 
-const BookModel = require('./models/book');
 const UserModel = require('./models/user');
 
 const seedDatabase = require('./seed.js');

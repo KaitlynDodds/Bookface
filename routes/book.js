@@ -1,7 +1,8 @@
 const express = require('express');
 
-const Book = require('../models/book');
-const User = require('../models/user');
+const Book 		= require('../models/book');
+const User 		= require('../models/user');
+const Comment 	= require('../models/comment');
 
 const isLoggedIn = require('./middleware/authentication');
 
@@ -12,6 +13,11 @@ router.get('/', isLoggedIn, (req, res) => {
 	res.render('book/feed');
 });
 
+
+/*************** 
+BOOK ROUTES 
+***************/
+
 // NEW - show new book form
 router.get('/new', isLoggedIn, (req, res) => {
 	res.render('book/new');
@@ -19,12 +25,22 @@ router.get('/new', isLoggedIn, (req, res) => {
 
 // SHOW - show profile for single book
 router.get('/:id', isLoggedIn, (req, res) => {
-	Book.findById(req.params.id).populate("comments").populate('user').exec((err, book) => {
-		if (err) {
-			console.log('error: ', err);
-			res.redirect('/');
-		}
-		res.render('book/show', {book: book});
+	// need data for book comments, and data about users who made those comments
+	Book.findById(req.params.id)
+		.populate('user')
+		.populate({ 
+			path: 'comments',
+			populate: { 
+					path: 'user',
+					model: 'User'
+				}
+		})
+		.exec((err, book) => {
+			if (err) {
+				console.log('error: ', err);
+				res.redirect('/');
+			}
+			res.render('book/show', {book: book});
 	});
 });
 
@@ -77,14 +93,43 @@ router.get('/:id/edit', isLoggedIn, (req, res) => {
 	});
 });
 
-// CREATE - submit changes to book 
+// UPDATE - submit changes to book 
 router.put('/:id', isLoggedIn, (req, res) => {
 	Book.findByIdAndUpdate(req.params.id, req.body.book, (err, book) => {
 		if (err) {
 			console.log('error: ', err);
-			res.redirect('/books/' + book._id);
+			res.redirect('/');
 		}
 		res.redirect('/books/' + book._id);
+	});
+});
+
+/*************** 
+COMMENT ROUTES 
+***************/
+
+router.post('/:id/comments', isLoggedIn, (req, res) => {
+	Book.findById(req.params.id, (err, book) => {
+		if (err) {
+			console.log('error: ', err);
+			res.redirect('/');
+		} else {
+			// create new comment
+			Comment.create(req.body.comment, (err, comment) => {
+				if (err) {
+					console.log('error: ', err);
+					res.redirect('/');
+				}
+				// add user id to comment
+				comment.user = req.user._id;
+				comment.save();
+				// push comment to book
+				book.comments.push(comment._id);
+				book.save();
+				// redirect back to book page 
+				res.redirect('/books/' + book._id);
+			});
+		}
 	});
 });
 
