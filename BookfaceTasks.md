@@ -29,13 +29,14 @@ Completed Tasks:
 	- Comment views
 		- comment listing on book SHOW
 	- Auth middleware, pass user data to every route 
+	- data validations for forms 
 	
 
 Working On:
-	- data validations for forms 
+	- fix border error when book cover art is smaller than expected size
 
 Tasks To Do:
 	- Seed database 
 	- add ability to change password
-	- fix border error when book cover art is smaller than expected size
+	
 	

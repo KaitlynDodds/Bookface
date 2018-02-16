@@ -61,16 +61,8 @@ User Profile
 }
 
 /*************
-Book Preview
+Book Show
 *************/
-
-#cover_thumbnail {
-	padding-left: 15px;
-}
-
-#book-previews {
-	margin-top: 40px;
-}
 
 #book-profile-image {
 	padding: 1px;
@@ -80,6 +72,18 @@ Book Preview
 
 #book-title-block {
 	display: inline-block;
+}
+
+/*************
+Book Preview
+*************/
+
+#cover_thumbnail {
+	padding-left: 15px;
+}
+
+#book-previews {
+	margin-top: 40px;
 }
 
 /*************
