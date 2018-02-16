@@ -26,6 +26,20 @@
 		</div>
 
 		<div class="four wide column">
+			<h3 id="comment-header" class="ui dividing header">Posted By</h3>
+			<!-- details of user who posted book -->
+			<a href="/user/<%= book.user._id %>/profile">
+				<div class="ui segment">
+					<img class="ui centered rounded image" src="<%= book.user.avatar %>">
+					<div class="content">
+						<h3 class="ui centered header">
+						  <%= book.user.username %>
+						</h3>
+					</div>
+				</div>
+			</a>
+
+
 
 			<h3 id="comment-header" class="ui dividing header">Comments</h3>
 
