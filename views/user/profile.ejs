@@ -3,31 +3,37 @@
 <div class="ui stackable grid">
 	<div class="six wide column">
 		<div id="profile-avatar" class="ui segment">
-			<img class="ui centered image" src="<%= currentUser.avatar %>">
+			<img class="ui centered image" src="<%= userProfile.avatar %>">
 			<div class="content">
 				<h3 class="ui dividing header">
-				  <%= currentUser.username %>
+				  <%= userProfile.username %>
 				</h3>
 				<div>
-					<small>Email: <a href="mailto:<%= currentUser.email %>"><%= currentUser.email %></a></small>
-					<small class="float-right sub header"><strong>Member Since: </strong><%= currentUser.date_joined.toDateString() %></small>
+					<small>Email: <a href="mailto:<%= userProfile.email %>"><%= userProfile.email %></a></small>
+					<small class="float-right sub header"><strong>Member Since: </strong><%= userProfile.date_joined.toDateString() %></small>
 				</div>
 				<div id="bio">
-					<p><%= currentUser.bio %></p>					
+					<p><%= userProfile.bio %></p>					
 				</div>
 			</div>
 		</div>
 
+		<!-- The current user is the same user who posted this book, they have the ability to edit/delete book post -->
+		<% if (currentUser._id.toString() === userProfile._id.toString()) { %>
 		<div>
-			<a href="/user/<%= currentUser._id %>/edit" class="ui right floated basic purple button">Edit Profile</a>
-			<form action="/user/<%= currentUser._id %>?_method=DELETE" method="POST">
+			<a href="/user/<%= userProfile._id %>/edit" class="ui right floated basic purple button">Edit Profile</a>
+			<form action="/user/<%= userProfile._id %>?_method=DELETE" method="POST">
 				<button class="ui left floated basic negative button">Delete Profile</button>
 			</form>
 		</div>
+		<% } %>
 
 	</div>
 	<div class="ten wide column">
-		<a id="new-book-btn" class="ui positive basic button" href="/books/new">Post New Book</a>
+		<!-- The current user is the same user who posted this book, they have the ability to create new book posts here -->
+		<% if (currentUser._id.toString() === userProfile._id.toString()) { %>
+			<a id="new-book-btn" class="ui positive basic button" href="/books/new">Post New Book</a>
+		<% } %>
 		
 		<!-- BOOKS CREATED BY USER WILL GO HERE -->
 		<div id="book-profile-feed" class="ui divided very relaxed items">

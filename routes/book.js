@@ -10,7 +10,13 @@ const router = express.Router();
 
 // INDEX - SHOW ALL BOOKS
 router.get('/', isLoggedIn, (req, res) => {
-	res.render('book/feed');
+	Book.find({}).populate('user').exec((err, books) => {
+		if (err) {
+			console.log('error: ', err);
+		} else {
+			res.render('book/feed', {books: books});
+		}
+	});
 });
 
 

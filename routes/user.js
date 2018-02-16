@@ -18,7 +18,8 @@ router.get('/:id/profile', isLoggedIn, (req, res) => {
 			console.log('error: ', err);
 			res.redirect('/logout'); // FIXME: kzd -> secure?
 		} else {
-			res.render('user/profile', { books: user.books });
+			// pass user whos profile is attempting to be viewed, not necessarily the currentUser
+			res.render('user/profile', { books: user.books, userProfile: user});
 		}
 	});	
 });
@@ -26,6 +27,7 @@ router.get('/:id/profile', isLoggedIn, (req, res) => {
 // EDIT
 router.get('/:id/edit', isLoggedIn, (req, res) => {
 	User.findById(req.params.id, (err, user) => {
+		// FIXME: kzd -> turn this into middleware?
 		var loggedInUserId = req.user._id.toString();
 		var parameterUserId = user._id.toString();
 		if (loggedInUserId !== parameterUserId) {

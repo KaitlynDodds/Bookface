@@ -1,7 +1,9 @@
 <% include ../partials/header %>
 
-<h1>Books will go here</h1>
-
-<p><%= currentUser.username %></p>
+<div class="ui divided very relaxed items">
+<% books.forEach((book) => { %>
+	<% include ../partials/book_preview %>
+<% }); %>
+</div>
 
 <% include ../partials/footer %>

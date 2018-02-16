@@ -44,12 +44,12 @@
 				<% book.comments.forEach((comment) => { %>
 					<div class="comment">
 
-						<a class="avatar">
+						<a href="/user/<%= comment.user._id %>/profile" class="avatar">
 					    	<img src="<%= comment.user.avatar %>">
 					    </a>
 
 					    <div id="comment_content" class="content">
-					    	<a class="author"><%= comment.user.username %></a>
+					    	<a href="/user/<%= comment.user._id %>/profile" class="author"><%= comment.user.username %></a>
 
 							<div class="metadata">
 						    	<div class="date"><%= comment.date_added.toDateString() %></div>
