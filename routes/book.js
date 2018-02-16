@@ -10,12 +10,16 @@ const router = express.Router();
 
 // INDEX - SHOW ALL BOOKS
 router.get('/', isLoggedIn, (req, res) => {
-	Book.find({}).populate('user').sort('-date_added').exec((err, books) => {
-		if (err) {
-			console.log('error: ', err);
-		} else {
-			res.render('book/feed', {books: books});
-		}
+	Book.find({})
+		.populate('user')
+		// grab books newest first
+		.sort('-date_added')
+		.exec((err, books) => {
+			if (err) {
+				console.log('error: ', err);
+			} else {
+				res.render('book/feed', {books: books});
+			}
 	});
 });
 
@@ -62,7 +66,7 @@ router.post('/', isLoggedIn, (req, res) => {
 				book.save((err, savedBook) => {
 					if (err) {
 						console.log('error: ', err);
-						res.redirect('/book');
+						res.redirect('/books');
 					}
 					user.books.push(savedBook._id);
 					user.save((err, savedUser) => {

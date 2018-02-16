@@ -13,7 +13,19 @@ router.get('/', (req, res) => {
 
 // SHOW
 router.get('/:id/profile', isLoggedIn, (req, res) => {
-	User.findById(req.params.id).populate("books").exec((err, user) => {
+	User.findById(req.params.id)
+		.populate(
+			{ 
+				path: 'books', 
+				model: 'Book', 
+				options: 
+					{ 
+						sort: 
+							{ 'date_added': -1 // grab books newest first
+						} 
+					}
+			})
+		.exec((err, user) => {
 		if (err) {
 			console.log('error: ', err);
 			res.redirect('/logout'); // FIXME: kzd -> secure?
