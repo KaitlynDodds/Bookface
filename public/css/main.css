@@ -1,3 +1,6 @@
+/*************
+Main/Common
+*************/
 .container {
 	margin-top: 100px;
 	margin-bottom: 50px;
@@ -6,6 +9,18 @@
 svg {
 	margin-right: 15px;
 }
+
+.float-right {
+	float: right;
+}
+
+.full-width {
+	width: 100%;
+}
+
+/*************
+User Profile
+*************/
 
 #profile-avatar {
 	padding: 0;
@@ -17,10 +32,6 @@ svg {
 
 .ui.dividing.header {
 	margin-bottom: 0px;
-}
-
-.float-right {
-	float: right;
 }
 
 #bio {
@@ -35,11 +46,15 @@ svg {
 	padding-top: 15px;
 }
 
+/*************
+Book Preview
+*************/
+
 #cover_thumbnail {
 	padding-left: 15px;
 }
 
-#book-profile-feed {
+#book-previews {
 	margin-top: 40px;
 }
 
@@ -53,9 +68,9 @@ svg {
 	display: inline-block;
 }
 
-#book-rating {
-	float: right;
-}
+/*************
+Comments
+*************/
 
 #comment_content {
 	padding: 0;
@@ -67,6 +82,23 @@ svg {
 
 #comment-form textarea {
 	height: 100px;
+}
+
+/*************
+Book Feed
+*************/
+
+.book_feed_header {
+	margin-bottom: 20px;
+}
+
+.book_feed_profile {
+	display: flex;
+	flex-direction: row;
+}
+
+.book_feed_profile > div {
+	margin-left: 20px;
 }
 
 /*************

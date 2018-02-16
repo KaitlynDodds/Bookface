@@ -1,9 +1,46 @@
 <% include ../partials/header %>
 
-<div class="ui divided very relaxed items">
-<% books.forEach((book) => { %>
-	<% include ../partials/book_preview %>
-<% }); %>
+<div class="ui grid">
+	<div class="twelve wide column">
+		<!-- display all books that have been posted by all users here... -->
+		<% books.forEach((book) => { %>
+		<div class="ui grey segment book_feed">
+			<div class="ui rating float-right" data-rating="<%= book.rating %>"></div>
+
+			<div class="book_feed_header">
+				<a href="/books/<%= book._id %>" class="ui header">
+					<%= book.title %>
+					<div class="sub header">By <%= book.author %></div>
+				</a>
+			</div>
+
+			<div class="book_feed_profile">
+
+			    <div class="ui medium image">
+			      <img src="<%= book.image %>">
+			    </div>
+
+			    <div class="description">
+					<p><%= book.description.substring(0, 301) %>...</p>
+				</div>
+
+		  	</div>
+			
+		    <div class="ui basic secondary segment">
+				<h5><a href="/user/<%= book.user._id%>/profile"><%= book.user.username %></a> - <%= book.date_added.toDateString() %></h5>
+			</div>
+
+		</div>
+		<% }); %>
+
+	</div>
+
+	<div class="four wide column">
+		<!-- buttons to post new book -->
+		<a href="/books/new" class="ui positive basic button full-width">Post New Book</a>
+	</div>
 </div>
+
+
 
 <% include ../partials/footer %>

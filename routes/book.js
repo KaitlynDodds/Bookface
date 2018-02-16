@@ -10,7 +10,7 @@ const router = express.Router();
 
 // INDEX - SHOW ALL BOOKS
 router.get('/', isLoggedIn, (req, res) => {
-	Book.find({}).populate('user').exec((err, books) => {
+	Book.find({}).populate('user').sort('-date_added').exec((err, books) => {
 		if (err) {
 			console.log('error: ', err);
 		} else {
@@ -62,15 +62,15 @@ router.post('/', isLoggedIn, (req, res) => {
 				book.save((err, savedBook) => {
 					if (err) {
 						console.log('error: ', err);
-						res.redirect('/user/' + req.user._id + '/profile');
+						res.redirect('/book');
 					}
 					user.books.push(savedBook._id);
 					user.save((err, savedUser) => {
 						if (err) {
 							cosole.log('error: ', err);
-							res.redirect('/user/' + req.user._id + '/profile');
+							res.redirect('/books');
 						}
-						res.redirect('/user/' + req.user._id + '/profile');
+						res.redirect('/books');
 					});
 				});
 			});
