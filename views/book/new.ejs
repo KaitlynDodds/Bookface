@@ -4,28 +4,28 @@
 	
 	<h4>New Book Post</h4>
 
-	<form class="ui equal width form" action="/books" method="POST">
+	<form class="book-info-form ui equal width form" action="/books" method="POST">
 		<div class="fields">
 			<div class="field">
 				<label>Title</label>
-				<input type="text" name="book[title]" placeholder="Title">
+				<input type="text"id="title" name="book[title]" placeholder="Title">
 			</div>
 
 			<div class="field">
 				<label>Author</label>
-				<input type="text" name="book[author]" placeholder="Author">
+				<input type="text" id="author" name="book[author]" placeholder="Author">
 			</div>
 		</div>
 		
 		<div class="fields">
 			<div class="field">
 				<label>Cover Art</label>
-				<input type="text" name="book[image]" placeholder="Cover Art Url">
+				<input type="text" id="image" name="book[image]" placeholder="Cover Art Url">
 			</div>
 
 			<div class="field">
 				<label>Rating</label>
-				<select class="ui dropdown" name="book[rating]">
+				<select class="ui dropdown" id="rating" name="book[rating]">
 					<option value="0">0</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -38,11 +38,11 @@
 		
 		<div class="field">
 			<label>Description</label>
-			<textarea name="book[description]" placeholder="Synopsis..."></textarea>
+			<textarea id="description" name="book[description]" placeholder="Synopsis..."></textarea>
 		</div>
 
-		<button class="ui right floated basic button" type="submit">Post Book</button>
-
+		<input class="ui basic button" type="submit" value="Post Book">
+		<div class="ui error message"></div>
 	</form>
 
 </div>

@@ -5,7 +5,7 @@
 <h4 class="inline-block">Register New User</h4>
 <a class="float-right" href="/login">Already a User?</a>
 
-	<form class="ui form" action="/register" method="POST">
+	<form class="user-info-form ui form" action="/register" method="POST">
 		<div class="field">
 			<label>Username</label>
 			<input type="text" name="username" placeholder="Username">
@@ -31,6 +31,7 @@
 			<textarea name="bio" placeholder="Personal bio here.."></textarea>
 		</div>
 		<input class="ui submit button" type="submit">
+		<div class="ui error message"></div>
 	</form>
 
 </div>

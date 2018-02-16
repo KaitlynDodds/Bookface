@@ -2,29 +2,31 @@
 
 <div class="form-container">
 	
-	<p>Edit User Profile</p>
+	<h4>Edit User Profile</h4>
 
-	<form class="ui form" action="/user/<%= currentUser._id %>?_method=PUT" method="POST">
+	<form class="user-info-form ui form" action="/user/<%= currentUser._id %>?_method=PUT" method="POST">
 		<div class="field">
 			<label>Username</label>
-			<input type="text" name="user[username]" value="<%= currentUser.username %>">
+			<input type="text" id="username" name="user[username]" value="<%= currentUser.username %>">
 		</div>
 
 		<div class="field">
 			<label>Email</label>
-			<input type="text" name="user[email]" value="<%= currentUser.email %>">		
+			<input type="text" id="email" name="user[email]" value="<%= currentUser.email %>">		
 		</div>
 
 		<div class="field">
 			<label>Avatar</label>
-			<input type="text" name="user[avatar]" value="<%= currentUser.avatar %>">
+			<input type="text" id="avatar" name="user[avatar]" value="<%= currentUser.avatar %>">
 		</div>
 
 		<div class="field">
 			<label>Personal Bio</label>
-			<textarea name="user[bio]"><%= currentUser.bio %></textarea>
+			<textarea id="bio" name="user[bio]"><%= currentUser.bio %></textarea>
 		</div>
+		
 		<input class="ui submit button" type="submit">
+		<div class="ui error message"></div>
 	</form>
 
 </div>

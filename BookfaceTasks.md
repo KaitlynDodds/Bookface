@@ -32,10 +32,10 @@ Completed Tasks:
 	
 
 Working On:
-	- Index page ui (anyone can see)
+	- data validations for forms 
 
 Tasks To Do:
 	- Seed database 
-	- data validations for forms 
+	- add ability to change password
 	- fix border error when book cover art is smaller than expected size
 	
