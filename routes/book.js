@@ -9,7 +9,7 @@ const isLoggedIn = require('./middleware/authentication');
 const router = express.Router();
 
 // INDEX - SHOW ALL BOOKS
-router.get('/', isLoggedIn, (req, res) => {
+router.get('/', (req, res) => {
 	Book.find({})
 		.populate('user')
 		// grab books newest first

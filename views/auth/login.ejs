@@ -1,18 +1,24 @@
 <% include ../partials/header %>
 
-<h4>Login</h4>
+<div class="form-container">
 
-<form class="ui form" method="POST" action="/login">
-	<div class="field">
-		<label>Username</label>
-		<input type="text" name="username" placeholder="Username">
-	</div>
+	<h4 class="inline-block" >Login</h4>
+	<a class="float-right" href="/register">Register New User...</a>
+
+	<form class="ui form" method="POST" action="/login">
+		<div class="field">
+			<label>Username</label>
+			<input type="text" name="username" placeholder="Username">
+		</div>
+		
+		<div class="field">
+			<label>Password</label>
+			<input type="password" name="password" placeholder="Password">
+		</div>
+		<input class="ui submit button" type="submit">
+	</form>
 	
-	<div class="field">
-		<label>Password</label>
-		<input type="password" name="password" placeholder="Password">
-	</div>
-	<input class="ui submit button" type="submit">
-</form>
+</div>
+
 
 <% include ../partials/footer %>

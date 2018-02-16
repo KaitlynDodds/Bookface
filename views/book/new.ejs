@@ -1,46 +1,50 @@
 <% include ../partials/header %>
 
-<h4>New Book Post</h4>
-
-<form class="ui equal width form" action="/books" method="POST">
-	<div class="fields">
-		<div class="field">
-			<label>Title</label>
-			<input type="text" name="book[title]" placeholder="Title">
-		</div>
-
-		<div class="field">
-			<label>Author</label>
-			<input type="text" name="book[author]" placeholder="Author">
-		</div>
-	</div>
+<div class="form-container">
 	
-	<div class="fields">
+	<h4>New Book Post</h4>
+
+	<form class="ui equal width form" action="/books" method="POST">
+		<div class="fields">
+			<div class="field">
+				<label>Title</label>
+				<input type="text" name="book[title]" placeholder="Title">
+			</div>
+
+			<div class="field">
+				<label>Author</label>
+				<input type="text" name="book[author]" placeholder="Author">
+			</div>
+		</div>
+		
+		<div class="fields">
+			<div class="field">
+				<label>Cover Art</label>
+				<input type="text" name="book[image]" placeholder="Cover Art Url">
+			</div>
+
+			<div class="field">
+				<label>Rating</label>
+				<select class="ui dropdown" name="book[rating]">
+					<option value="0">0</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+			</div>
+		</div>
+		
 		<div class="field">
-			<label>Cover Art</label>
-			<input type="text" name="book[image]" placeholder="Cover Art Url">
+			<label>Description</label>
+			<textarea name="book[description]" placeholder="Synopsis..."></textarea>
 		</div>
 
-		<div class="field">
-			<label>Rating</label>
-			<select class="ui dropdown" name="book[rating]">
-				<option value="0">0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-			</select>
-		</div>
-	</div>
-	
-	<div class="field">
-		<label>Description</label>
-		<textarea name="book[description]" placeholder="Synopsis..."></textarea>
-	</div>
+		<button class="ui right floated basic button" type="submit">Post Book</button>
 
-	<button class="ui right floated basic button" type="submit">Post Book</button>
+	</form>
 
-</form>
+</div>
 
 <% include ../partials/footer %>

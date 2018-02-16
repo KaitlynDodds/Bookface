@@ -1,29 +1,32 @@
 <% include ../partials/header %>
 
-<p>Edit User Profile</p>
+<div class="form-container">
+	
+	<p>Edit User Profile</p>
 
-<form class="ui form" action="/user/<%= currentUser._id %>?_method=PUT" method="POST">
-	<div class="field">
-		<label>Username</label>
-		<input type="text" name="user[username]" value="<%= currentUser.username %>">
-	</div>
+	<form class="ui form" action="/user/<%= currentUser._id %>?_method=PUT" method="POST">
+		<div class="field">
+			<label>Username</label>
+			<input type="text" name="user[username]" value="<%= currentUser.username %>">
+		</div>
 
-	<div class="field">
-		<label>Email</label>
-		<input type="text" name="user[email]" value="<%= currentUser.email %>">		
-	</div>
+		<div class="field">
+			<label>Email</label>
+			<input type="text" name="user[email]" value="<%= currentUser.email %>">		
+		</div>
 
-	<div class="field">
-		<label>Avatar</label>
-		<input type="text" name="user[avatar]" value="<%= currentUser.avatar %>">
-	</div>
+		<div class="field">
+			<label>Avatar</label>
+			<input type="text" name="user[avatar]" value="<%= currentUser.avatar %>">
+		</div>
 
-	<div class="field">
-		<label>Personal Bio</label>
-		<textarea name="user[bio]"><%= currentUser.bio %></textarea>
-	</div>
-	<input class="ui submit button" type="submit">
-</form>
+		<div class="field">
+			<label>Personal Bio</label>
+			<textarea name="user[bio]"><%= currentUser.bio %></textarea>
+		</div>
+		<input class="ui submit button" type="submit">
+	</form>
 
+</div>
 
 <% include ../partials/footer %>

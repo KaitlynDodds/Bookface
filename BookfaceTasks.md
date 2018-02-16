@@ -23,6 +23,7 @@ Completed Tasks:
 		- new form
 		- show 
 		- edit form 
+		- feed 
 	Comment routes
 		- CREATE
 	- Comment views
@@ -30,14 +31,11 @@ Completed Tasks:
 	- Auth middleware, pass user data to every route 
 	
 
-Tasks To Do:
-	- Book Model (finalized)
-	- User Model (finalized)
-	- Comment Model (finalized)		
-	- Book views
-		- feed 
-	- Seed database 
+Working On:
 	- Index page ui (anyone can see)
+
+Tasks To Do:
+	- Seed database 
 	- data validations for forms 
 	- fix border error when book cover art is smaller than expected size
 	
