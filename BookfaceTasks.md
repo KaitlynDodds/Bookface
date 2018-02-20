@@ -30,13 +30,16 @@ Completed Tasks:
 		- comment listing on book SHOW
 	- Auth middleware, pass user data to every route 
 	- data validations for forms 
-	
+	- fix border error when book cover art is smaller than expected size
+	- Refactor models and adjust routes accordingly 
 
 Working On:
-	- fix border error when book cover art is smaller than expected size
+	- move comment routes to their own route file 
 
 Tasks To Do:
 	- Seed database 
 	- add ability to change password
+	- Write middleware to prevent changes being made to books/profiles by users who do not own them (checkOwnership--)
+	- when deleting an entity, delete all dependent entities as well 
 	
 	

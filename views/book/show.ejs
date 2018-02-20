@@ -28,12 +28,11 @@
 		<div class="four wide column">
 			<h3 id="comment-header" class="ui dividing header">Posted By</h3>
 			<!-- details of user who posted book -->
-			<a href="/user/<%= book.user._id %>/profile">
+			<a href="/user/<%= book.owner.id %>/profile">
 				<div class="ui segment">
-					<img class="ui centered rounded image" src="<%= book.user.avatar %>">
 					<div class="content">
 						<h3 class="ui centered header">
-						  <%= book.user.username %>
+						  <%= book.owner.username %>
 						</h3>
 					</div>
 				</div>
@@ -57,13 +56,8 @@
 			<div class="ui comments">
 				<% book.comments.forEach((comment) => { %>
 					<div class="comment">
-
-						<a href="/user/<%= comment.user._id %>/profile" class="avatar">
-					    	<img src="<%= comment.user.avatar %>">
-					    </a>
-
 					    <div id="comment_content" class="content">
-					    	<a href="/user/<%= comment.user._id %>/profile" class="author"><%= comment.user.username %></a>
+					    	<a href="/user/<%= comment.author.id %>/profile" class="author"><%= comment.author.username %></a>
 
 							<div class="metadata">
 						    	<div class="date"><%= comment.date_added.toDateString() %></div>
@@ -82,7 +76,7 @@
 	</div>
 
 	<!-- The current user is the same user who posted this book, they have the ability to edit/delete book post -->
-	<% if (currentUser._id.toString() === book.user._id.toString()) { %>
+	<% if (currentUser._id.equals(book.owner.id)) { %>
 		<div class="row">
 
 			<div class="four wide column">

@@ -27,7 +27,7 @@
 		  	</div>
 			
 		    <div class="ui basic secondary segment">
-				<h5><a href="/user/<%= book.user._id%>/profile"><%= book.user.username %></a> - <%= book.date_added.toDateString() %></h5>
+				<h5><a href="/user/<%= book.owner.id%>/profile"><%= book.owner.username %></a> - <%= book.date_added.toDateString() %></h5>
 			</div>
 
 		</div>

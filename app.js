@@ -10,6 +10,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const bookRoutes 	= require('./routes/book');
 const userRoutes 	= require('./routes/user');
 const authRoutes 	= require('./routes/auth');
+const commentRoutes 	= require('./routes/comments');
 
 const UserModel = require('./models/user');
 
@@ -57,6 +58,7 @@ app.get('/', (req, res) => {
 app.use('/', authRoutes);
 app.use('/books', bookRoutes);
 app.use('/user', userRoutes);
+app.use('/books/:id/comments', commentRoutes);
 
 
 
