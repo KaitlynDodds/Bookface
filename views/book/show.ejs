@@ -76,7 +76,7 @@
 	</div>
 
 	<!-- The current user is the same user who posted this book, they have the ability to edit/delete book post -->
-	<% if (currentUser._id.equals(book.owner.id)) { %>
+	<% if (currentUser && currentUser._id.equals(book.owner.id)) { %>
 		<div class="row">
 
 			<div class="four wide column">

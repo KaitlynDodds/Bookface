@@ -32,14 +32,14 @@ Completed Tasks:
 	- data validations for forms 
 	- fix border error when book cover art is smaller than expected size
 	- Refactor models and adjust routes accordingly 
+	- move comment routes to their own route file 
 
 Working On:
-	- move comment routes to their own route file 
+	- Write middleware to prevent changes being made to books/profiles by users who do not own them (checkOwnership--)
 
 Tasks To Do:
 	- Seed database 
 	- add ability to change password
-	- Write middleware to prevent changes being made to books/profiles by users who do not own them (checkOwnership--)
 	- when deleting an entity, delete all dependent entities as well 
 	
 	

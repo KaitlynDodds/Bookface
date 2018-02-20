@@ -3,7 +3,7 @@ const express = require('express');
 const Book 		= require('../models/book');
 const Comment 	= require('../models/comment');
 
-const isLoggedIn = require('./middleware/authentication');
+const isLoggedIn = require('./middleware/isLoggedIn');
 
 const router = express.Router({mergeParams: true});
 

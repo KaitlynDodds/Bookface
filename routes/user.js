@@ -4,7 +4,7 @@ const passport = require('passport');
 const router = express.Router();
 
 const User = require('../models/user');
-const isLoggedIn = require('./middleware/authentication');
+const isLoggedIn = require('./middleware/isLoggedIn');
 
 // INDEX
 router.get('/', (req, res) => {
