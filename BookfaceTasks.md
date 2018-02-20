@@ -33,9 +33,10 @@ Completed Tasks:
 	- fix border error when book cover art is smaller than expected size
 	- Refactor models and adjust routes accordingly 
 	- move comment routes to their own route file 
+	- Write middleware to prevent changes being made to books/profiles by users who do not own them (checkOwnership--)
 
 Working On:
-	- Write middleware to prevent changes being made to books/profiles by users who do not own them (checkOwnership--)
+	
 
 Tasks To Do:
 	- Seed database 

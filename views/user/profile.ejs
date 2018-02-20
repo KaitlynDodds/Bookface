@@ -3,26 +3,26 @@
 <div class="ui stackable grid">
 	<div class="six wide column">
 		<div id="profile-avatar" class="ui segment">
-			<img class="ui centered image" src="<%= userProfile.avatar %>">
+			<img class="ui centered image" src="<%= profile_user.avatar %>">
 			<div class="content">
 				<h3 class="ui dividing header">
-				  <%= userProfile.username %>
+				  <%= profile_user.username %>
 				</h3>
 				<div>
-					<small>Email: <a href="mailto:<%= userProfile.email %>"><%= userProfile.email %></a></small>
-					<small class="float-right sub header"><strong>Member Since: </strong><%= userProfile.date_joined.toDateString() %></small>
+					<small>Email: <a href="mailto:<%= profile_user.email %>"><%= profile_user.email %></a></small>
+					<small class="float-right sub header"><strong>Member Since: </strong><%= profile_user.date_joined.toDateString() %></small>
 				</div>
 				<div id="bio">
-					<p><%= userProfile.bio %></p>					
+					<p><%= profile_user.bio %></p>					
 				</div>
 			</div>
 		</div>
 
 		<!-- The current user is the same user who posted this book, they have the ability to edit/delete book post -->
-		<% if (currentUser._id.toString() === userProfile._id.toString()) { %>
+		<% if (currentUser && currentUser._id.equals(profile_user._id)) { %>
 		<div>
-			<a href="/user/<%= userProfile._id %>/edit" class="ui right floated basic purple button">Edit Profile</a>
-			<form action="/user/<%= userProfile._id %>?_method=DELETE" method="POST">
+			<a href="/user/<%= profile_user._id %>/edit" class="ui right floated basic purple button">Edit Profile</a>
+			<form action="/user/<%= profile_user._id %>?_method=DELETE" method="POST">
 				<button class="ui left floated basic negative button">Delete Profile</button>
 			</form>
 		</div>
@@ -31,13 +31,13 @@
 	</div>
 	<div class="ten wide column">
 		<!-- The current user is the same user who posted this book, they have the ability to create new book posts here -->
-		<% if (currentUser._id.toString() === userProfile._id.toString()) { %>
+		<% if (currentUser && currentUser._id.equals(profile_user._id)) { %>
 			<a id="new-book-btn" class="ui positive basic button" href="/books/new">Post New Book</a>
 		<% } %>
 		
 		<!-- BOOKS CREATED BY USER WILL GO HERE -->
 		<div id="book-previews" class="ui divided very relaxed items">
-			<% books.forEach((book) => { %>
+			<% profile_user.books.forEach((book) => { %>
 				<% include ../partials/book_preview %>
 			<% }) %>
 		</div>
