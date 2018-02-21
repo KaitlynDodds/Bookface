@@ -4,8 +4,7 @@ const Book 		= require('../models/book');
 const User 		= require('../models/user');
 const Comment 	= require('../models/comment');
 
-const isLoggedIn 			= require('./middleware/isLoggedIn');
-const checkBookOwnership 	= require('./middleware/checkBookOwnership');
+const middleware = require('../middleware');
 
 const router = express.Router();
 
@@ -23,7 +22,7 @@ router.get('/', (req, res) => {
 });
 
 // NEW - show new book form
-router.get('/new', isLoggedIn, (req, res) => {
+router.get('/new', middleware.isLoggedIn, (req, res) => {
 	res.render('book/new');
 });
 
@@ -42,7 +41,7 @@ router.get('/:id', (req, res) => {
 });
 
 // CREATE - create new book 
-router.post('/', isLoggedIn, (req, res) => {
+router.post('/', middleware.isLoggedIn, (req, res) => {
 	// user who is creating book
 	const owner = {
 		id: req.user._id,
@@ -71,7 +70,7 @@ router.post('/', isLoggedIn, (req, res) => {
 });
 
 // EDIT - show form to edit book
-router.get('/:id/edit', checkBookOwnership, (req, res) => {
+router.get('/:id/edit', middleware.checkBookOwnership, (req, res) => {
 	Book.findById(req.params.id, (err, book) => {
 		if (err) {
 			console.log('error: ', err);
@@ -82,7 +81,7 @@ router.get('/:id/edit', checkBookOwnership, (req, res) => {
 });
 
 // UPDATE - submit changes to book 
-router.put('/:id', checkBookOwnership, (req, res) => {
+router.put('/:id', middleware.checkBookOwnership, (req, res) => {
 	Book.findByIdAndUpdate(req.params.id, req.body.book, (err, book) => {
 		if (err) {
 			console.log('error: ', err);
@@ -93,7 +92,7 @@ router.put('/:id', checkBookOwnership, (req, res) => {
 });
 
 // DELETE 
-router.delete('/:id', checkBookOwnership, (req, res) => {
+router.delete('/:id', middleware.checkBookOwnership, (req, res) => {
 	Book.findByIdAndRemove(req.params.id, (err, book) => {
 		if (err) {
 			console.log('error: ', err);			

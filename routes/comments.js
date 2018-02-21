@@ -3,12 +3,12 @@ const express = require('express');
 const Book 		= require('../models/book');
 const Comment 	= require('../models/comment');
 
-const isLoggedIn = require('./middleware/isLoggedIn');
+const middleware = require('../middleware');
 
 const router = express.Router({mergeParams: true});
 
 // CREATE
-router.post('/', isLoggedIn, (req, res) => {
+router.post('/', middleware.isLoggedIn, (req, res) => {
 	const author = {
 		id: req.user.id,
 		username: req.user.username

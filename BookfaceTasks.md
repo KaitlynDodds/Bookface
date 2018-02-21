@@ -34,13 +34,15 @@ Completed Tasks:
 	- Refactor models and adjust routes accordingly 
 	- move comment routes to their own route file 
 	- Write middleware to prevent changes being made to books/profiles by users who do not own them (checkOwnership--)
+	- refactor middleware 
 
 Working On:
-	
+	- add flash notifications
 
 Tasks To Do:
 	- Seed database 
 	- add ability to change password
-	- when deleting an entity, delete all dependent entities as well 
+	- when deleting an entity, delete all dependent entities as well
+	 
 	
 	

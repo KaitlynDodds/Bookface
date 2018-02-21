@@ -1,11 +1,11 @@
-const express = require('express');
-const passport = require('passport');
+const express 	= require('express');
+const passport 	= require('passport');
 
-const router = express.Router();
+const router 	= express.Router();
 
-const User = require('../models/user');
-const isLoggedIn = require('./middleware/isLoggedIn');
-const checkIsUser = require('./middleware/checkIsUser');
+const User 		= require('../models/user');
+
+const middleware = require('../middleware');
 
 // INDEX
 router.get('/', (req, res) => {
@@ -38,7 +38,7 @@ router.get('/:id/profile', (req, res) => {
 });
 
 // EDIT
-router.get('/:id/edit', checkIsUser, (req, res) => {
+router.get('/:id/edit', middleware.checkIsUser, (req, res) => {
 	User.findById(req.params.id, (err, user) => {
 		if (err) {
 			console.log('error: ', err);
@@ -50,7 +50,7 @@ router.get('/:id/edit', checkIsUser, (req, res) => {
 
 
 // UPDATE
-router.put('/:id', checkIsUser, (req, res)=> {
+router.put('/:id', middleware.checkIsUser, (req, res)=> {
 	User.findByIdAndUpdate(req.params.id, req.body.user, (err, user) => {
 		if (err) {
 			console.log('error: ', err);
@@ -61,7 +61,7 @@ router.put('/:id', checkIsUser, (req, res)=> {
 });
 
 // DELETE
-router.delete('/:id', checkIsUser, (req, res) => {
+router.delete('/:id', middleware.checkIsUser, (req, res) => {
 	User.findByIdAndRemove(req.params.id, (err, user) => {
 		if (err) {
 			console.log('error: ', err);
