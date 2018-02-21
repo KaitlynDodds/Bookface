@@ -42,6 +42,43 @@
 
 			<h3 id="comment-header" class="ui dividing header">Comments</h3>
 
+			<!-- Display comments for book -->
+			<div class="ui comments">
+				<% book.comments.forEach((comment) => { %>
+					<div class="comment">
+
+					    <div id="comment-content" class="content">
+
+					    	<div class="flex flex-row">
+
+						    	<div class="flex flex-column">
+						    		<a href="/user/<%= comment.author.id %>/profile" class="author"><%= comment.author.username %></a>
+
+									<div class="metadata">
+								    	<div class="date"><%= comment.date_added.toDateString() %></div>
+								    </div>
+								</div>
+
+								<div class="flex flex-row comment-options">
+									<div>
+										<a href="">Edit</a>
+									</div>
+									<form>
+							    		<a href="" >Delete</a>
+							    	</form>
+								</div>
+
+							</div>
+
+							<div class="text">
+					        	<%= comment.content %>
+					      	</div>
+
+					    </div>
+					</div>
+				<% }) %>
+			</div>
+
 			<!-- Form to create new comment -->
 			<form action="<%= book._id %>/comments" method="POST" id="comment-form" class="ui reply form">
 			    <div class="field">
@@ -51,26 +88,6 @@
 			      	Add Comment
 			    </button>
 		  	</form>
-
-		  	<!-- Display comments for book -->
-			<div class="ui comments">
-				<% book.comments.forEach((comment) => { %>
-					<div class="comment">
-					    <div id="comment_content" class="content">
-					    	<a href="/user/<%= comment.author.id %>/profile" class="author"><%= comment.author.username %></a>
-
-							<div class="metadata">
-						    	<div class="date"><%= comment.date_added.toDateString() %></div>
-						    </div>
-
-							<div class="text">
-					        	<%= comment.content %>
-					      	</div>
-					    </div>
-
-					</div>
-				<% }) %>
-			</div>
 
 		</div>
 	</div>

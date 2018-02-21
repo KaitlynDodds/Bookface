@@ -39,7 +39,7 @@ Completed Tasks:
 	- fix rating system in forms 
 
 Working On:
-	
+	- Delete option for comments 
 
 Tasks To Do:
 	- Seed database 
@@ -49,7 +49,6 @@ Tasks To Do:
 		- book show page 
 		- book edit/new page
 	- UI for landing page
-	- Delete option for comments 
 	- Edit option for comments 
 	 
 	

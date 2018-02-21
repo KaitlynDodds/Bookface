@@ -100,8 +100,46 @@ Book Preview
 Comments
 *************/
 
-#comment_content {
+#comment-content {
 	padding: 0;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+.flex-row {
+	flex-direction: row;
+}
+
+.flex-column {
+	flex-direction: column;
+}
+
+.ui.comments .comment {
+	border-bottom: solid 1px #aeaeae;
+}
+
+.ui.comments .comment:last-child {
+	border-bottom: none;
+}
+
+.comment-options a {
+	color: #aeaeae;
+}
+
+.comment-options a:hover {
+	color: #767676;
+	text-decoration: underline;
+}
+
+.comment-options div:nth-child(1n) {
+	margin-right: 5px;
+}
+
+.ui.comments .comment .metadata {
+	margin-left: 0;
 }
 
 #comment-header {
@@ -110,6 +148,10 @@ Comments
 
 #comment-form textarea {
 	height: 100px;
+}
+
+.ui.comments .comment .text {
+	margin: 10px 0;
 }
 
 /*************
