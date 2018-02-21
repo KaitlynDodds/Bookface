@@ -37,4 +37,15 @@ router.post('/', middleware.isLoggedIn, (req, res) => {
 	});
 });
 
+// DELETE 
+router.delete('/:comment_id', middleware.checkCommentOwnership, (req, res) => {
+	Comment.findByIdAndRemove(req.params.comment_id, (err, comment) => {
+		if (err) {
+			console.log('error: ', err);
+			res.redirect('/');
+		}
+		res.redirect('/books/' + req.params.id);
+	});
+});
+
 module.exports = router;

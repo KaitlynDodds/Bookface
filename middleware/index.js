@@ -1,5 +1,6 @@
 const Book = require('../models/book');
 const User = require('../models/user');
+const Comment = require('../models/comment');
 
 var middlewareObj = {};
 
@@ -45,6 +46,27 @@ middlewareObj.checkBookOwnership = function(req, res, next) {
 				return next();
 			}
 			else {
+				res.redirect('back');
+			}
+		});
+	} else {
+		res.redirect('back');
+	}
+}
+
+middlewareObj.checkCommentOwnership = function(req, res, next) {
+	// check if logged in
+	if (req.isAuthenticated()) {
+		// find comment
+		Comment.findById(req.params.comment_id, (err, comment) => {
+			if (err) {
+				console.log('error: ', err);
+				res.redirect('back');
+			} 
+			// check if comments belongs to user 
+			else if (comment.author.id.equals(req.user._id)) {
+				return next();
+			} else {
 				res.redirect('back');
 			}
 		});

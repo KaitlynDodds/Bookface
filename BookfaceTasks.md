@@ -37,9 +37,10 @@ Completed Tasks:
 	- refactor middleware 
 	- add flash notifications
 	- fix rating system in forms 
+	- Delete option for comments 
 
 Working On:
-	- Delete option for comments 
+	- Edit option for comments 
 
 Tasks To Do:
 	- Seed database 
@@ -49,7 +50,7 @@ Tasks To Do:
 		- book show page 
 		- book edit/new page
 	- UI for landing page
-	- Edit option for comments 
+	
 	 
 	
 	
