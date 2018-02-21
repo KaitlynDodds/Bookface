@@ -35,18 +35,22 @@ Completed Tasks:
 	- move comment routes to their own route file 
 	- Write middleware to prevent changes being made to books/profiles by users who do not own them (checkOwnership--)
 	- refactor middleware 
+	- add flash notifications
+	- fix rating system in forms 
 
 Working On:
-	- add flash notifications
+	
 
 Tasks To Do:
 	- Seed database 
 	- add ability to change password
 	- when deleting an entity, delete all dependent entities as well
-	- fix rating system in forms 
 	- fix UI issues
 		- book show page 
+		- book edit/new page
 	- UI for landing page
+	- Delete option for comments 
+	- Edit option for comments 
 	 
 	
 	

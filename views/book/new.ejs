@@ -12,27 +12,21 @@
 			</div>
 
 			<div class="field">
-				<label>Author</label>
-				<input type="text" id="author" name="book[author]" placeholder="Author">
+				<label>Rating</label>
+				<div class="ui huge rating form" data-max-rating="5"></div>
+				<input type="hidden" id="ratingValue" name="book[rating]" value="0">
 			</div>
 		</div>
 		
 		<div class="fields">
 			<div class="field">
-				<label>Cover Art</label>
-				<input type="text" id="image" name="book[image]" placeholder="Cover Art Url">
+				<label>Author</label>
+				<input type="text" id="author" name="book[author]" placeholder="Author">
 			</div>
 
 			<div class="field">
-				<label>Rating</label>
-				<select class="ui dropdown" id="rating" name="book[rating]">
-					<option value="0">0</option>
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-				</select>
+				<label>Cover Art</label>
+				<input type="text" id="image" name="book[image]" placeholder="Cover Art Url">
 			</div>
 		</div>
 		

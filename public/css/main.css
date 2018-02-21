@@ -74,6 +74,16 @@ Book Show
 	display: inline-block;
 }
 
+.ui.rating .active.icon,
+.ui.rating .selected.icon,
+.ui.rating .active.selected.icon { 
+	color: orange;
+}
+
+.ui.rating.form {
+	margin-top: 8px;
+}
+
 /*************
 Book Preview
 *************/

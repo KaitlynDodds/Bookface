@@ -1,8 +1,18 @@
 $('document').ready(function(){
 	// use for star rating system on books
-	$('.ui.rating').rating({
+	$('.ui.rating.show').rating({
 			interactive: false, 
 			maxRating: 5
+		});
+
+	// allow user to rate book in new/edit book forms 
+	$('.ui.rating.form').rating({
+			interactive: true, 
+			maxRating: 5,
+			onRate: function(value) {
+				// set value of hidden input 
+				$('#ratingValue').attr('value', value);
+			}
 		});
 
 	// close flash notifications
