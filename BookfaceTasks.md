@@ -43,6 +43,10 @@ Tasks To Do:
 	- Seed database 
 	- add ability to change password
 	- when deleting an entity, delete all dependent entities as well
+	- fix rating system in forms 
+	- fix UI issues
+		- book show page 
+	- UI for landing page
 	 
 	
 	

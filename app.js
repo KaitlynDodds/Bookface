@@ -5,7 +5,8 @@ const passportLocalMongoose = require('passport-local-mongoose');
 	  bodyParser 			= require('body-parser'),
 	  mongoose 				= require('mongoose'),
 	  passport 				= require('passport'),
-	  express 				= require('express');
+	  express 				= require('express'),
+	  flash					= require('express-flash');
 
 const bookRoutes 	= require('./routes/book');
 const userRoutes 	= require('./routes/user');
@@ -27,6 +28,7 @@ app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(flash());
 // encode/decode session
 app.use(expressSession({
 	secret: "Books can transport you to a whole new world.",

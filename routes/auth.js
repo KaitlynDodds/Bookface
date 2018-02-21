@@ -20,10 +20,12 @@ router.post('/register', (req, res) => {
 			}
 		), req.body.password, (err, user) => {
 			if (err) {
-				console.log('error: ', error);
-				return res.render('register');
+				console.log('error: ', err);
+				req.flash('error', err.message);
+				return res.redirect('/register');
 			} 
 			passport.authenticate("local")(req, res, () => {
+				req.flash('success', 'Welcome to Bookface!');
 				res.redirect('/books');
 			});
 	});
@@ -31,13 +33,14 @@ router.post('/register', (req, res) => {
 
 // LOGIN - login form
 router.get('/login', (req, res) => {
-	res.render('auth/login', {isLoggedIn: false});
+	res.render('auth/login');
 });
 
 //LOGIN - post authentication
 router.post('/login', passport.authenticate('local', {
 	successRedirect: "/books",
-	failureRedirect: "/login"
+	failureRedirect: "/login",
+	failureFlash: "Invalid username or password"
 }), (req, res) => {
 	
 });

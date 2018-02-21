@@ -5,6 +5,13 @@ $('document').ready(function(){
 			maxRating: 5
 		});
 
+	// close flash notifications
+	$('.message .close').on('click', function() {
+	    $(this)
+	      .closest('.message')
+	      .transition('fade');
+	  });
+
 	// validate register new user and edit user profile forms 
 	$('.user-info-form')
 	  .form({

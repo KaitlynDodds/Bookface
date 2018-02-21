@@ -55,6 +55,7 @@ router.post('/', middleware.isLoggedIn, (req, res) => {
 		Book.create(req.body.book, (err, book) => {
 			if (err) {
 				console.log('error: ', err);
+				req.flash('error', err.message);
 				res.redirect('/books/new');
 			}
 			// add owner to book
@@ -64,6 +65,7 @@ router.post('/', middleware.isLoggedIn, (req, res) => {
 			user.books.push(book._id);
 			user.save();
 			// redirect
+			req.flash('success', 'New book created successfully.');
 			res.redirect('/books');
 		});
 	});
@@ -85,8 +87,10 @@ router.put('/:id', middleware.checkBookOwnership, (req, res) => {
 	Book.findByIdAndUpdate(req.params.id, req.body.book, (err, book) => {
 		if (err) {
 			console.log('error: ', err);
+			req.flash('error', err.message);
 			res.redirect('/');
 		}
+		req.flash('success', 'Book updated successfully.');
 		res.redirect('/books/' + book._id);
 	});
 });
@@ -95,8 +99,11 @@ router.put('/:id', middleware.checkBookOwnership, (req, res) => {
 router.delete('/:id', middleware.checkBookOwnership, (req, res) => {
 	Book.findByIdAndRemove(req.params.id, (err, book) => {
 		if (err) {
-			console.log('error: ', err);			
+			console.log('error: ', err);	
+			req.flash('error', err.message);
+			res.redirect('/books');
 		} 
+		req.flash('success', 'Book removed successfully.');
 		res.redirect('/user/' + req.user._id + '/profile');
 	});
 });

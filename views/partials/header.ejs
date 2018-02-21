@@ -35,7 +35,24 @@
 
 	<!-- CONTENT -->
 	<div class="ui container">
-		
+
+		<!-- Check for flash notification -->
+		<% if (messages.success) { %>
+			<div class="ui success message">
+			  <i class="close icon"></i>
+			  <div class="header">
+			  	<%= messages.success %>
+			  </div>
+			</div>
+		<% } %>
+		<% if (messages.error) { %>
+			<div class="ui negative message">
+			  <i class="close icon"></i>
+			  <div class="header">
+			  	<%= messages.error %>
+			  </div>
+			</div>
+		<% } %>
 	
 
 
