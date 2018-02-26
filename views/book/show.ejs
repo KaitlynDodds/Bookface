@@ -49,18 +49,14 @@
 
 								<div class="flex flex-row comment-options">
 									<% if (currentUser && currentUser._id.equals(comment.author.id)) { %>
-										<div>
-											<a href="">Edit</a>
-										</div>
 										<form action="/books/<%= book._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-								    		<button >Delete</button>
+								    		<button>Delete</button>
 								    	</form>
 							    	<% } %>
 								</div>
-
 							</div>
 
-							<div class="text">
+							<div class="text" id="comment-text">
 					        	<%= comment.content %>
 					      	</div>
 

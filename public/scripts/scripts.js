@@ -1,4 +1,5 @@
 $('document').ready(function(){
+
 	// use for star rating system on books
 	$('.ui.rating.show').rating({
 			interactive: false, 
